@@ -1,7 +1,8 @@
 URL = {
     'base': 'https://{proxy}.api.riotgames.com/lol/{url}',
     'summoner_by_name': 'summoner/v{version}/summoners/by-name/{names}',
-    'match_by_puuid': 'match/v{version}/matches/by-puuid/{puuid}/ids'
+    'match_id_by_puuid': 'match/v{version}/matches/by-puuid/{puuid}/ids',
+    'match_by_matchid': 'match/v{version}/matches/{matchid}'
 }
 API_VERSIONS = {
     'summoner': '4',
