@@ -30,6 +30,13 @@ class RiotAPI(object):
         )
         return self._request(api_url, region)
 
+    def getSummonerByPuuid(self, puuid, region):
+        api_url = Consts.URL['summoner_by_puuid'].format(
+            version=Consts.API_VERSIONS['summoner'],
+            puuid=puuid
+        )
+        return self._request(api_url, region)
+
     def getMatchIdByPuuid(self, puuid, region, start, count):
         if count > 100:
             count = 100
