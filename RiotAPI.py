@@ -30,10 +30,24 @@ class RiotAPI(object):
         )
         return self._request(api_url, region)
 
-    def getMatchIdByPuuid(self, puuid, region):
+    def getMatchIdByPuuid(self, puuid, region, start, count):
+        if count > 100:
+            count = 100
+
+        elif count < 0:
+            count = 0
+
+        if start < 0:
+            start = 0
+
+        elif start > count - 1:
+            start = count -1
+
         api_url = Consts.URL['match_id_by_puuid'].format(
             version=Consts.API_VERSIONS['match'],
-            puuid=puuid
+            puuid=puuid,
+            start=start,
+            count=count
         )
         return self._request(api_url, region)
 
