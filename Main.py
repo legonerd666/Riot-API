@@ -2,9 +2,12 @@ from RiotAPI import RiotAPI
 import RiotConsts as Consts
 from tkinter import *
 
-def main():
 
-    root = Tk()
+root = Tk()
+root.title('API App')
+kills_label = Label(root)
+
+def main():
 
     def checkKills():
         api_file = open("../../API_Key.txt", 'r')
@@ -27,6 +30,8 @@ def main():
                 print('    ' + str(i['summonerName']) + '\'s: \n        ' + str(i['championName']) + '\'s Kills: ' + str(i['kills']) + '\n')
 
                 if i['summonerName'] == username_field.get():
+                    global kills_label
+                    kills_label.destroy()
                     kills_label = Label(root, text='Your Kills as ' + str(i['championName']) + ' were: ' + str(i['kills']))
                     kills_label.grid(row=5, column=0)
                 index -= 1
